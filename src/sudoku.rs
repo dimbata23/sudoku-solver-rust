@@ -1,7 +1,6 @@
-use std::{collections::HashSet, convert::TryInto, io::BufRead};
+use std::{ collections::HashSet, io::BufRead };
 use std::fs::File;
-use std::io::Read;
-use std::io::{self, BufReader};
+use std::io::{ self, BufReader };
 
 const   SIZE        : usize     = 9;
 const   SMALL_SIZE  : usize     = 3;
