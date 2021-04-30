@@ -78,12 +78,7 @@ impl Sudoku {
     }
 
     pub fn solve( &mut self ) -> bool {
-        if self.remove_guesses() && self.is_filled() || self.complex_solve() {
-            true
-        }
-        else {
-            false
-        }
+        self.remove_guesses() && self.complex_solve()
     }
 
     fn remove_guesses( &mut self ) -> bool {
@@ -169,7 +164,7 @@ impl Sudoku {
                         }
 
                         if self.fgrid[ y ][ x ].fvalue == DEFAULT_CHAR {
-                            return false;   // Check if we ever land here
+                            return false;
                         }
                     }
                 }
