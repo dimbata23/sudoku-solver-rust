@@ -21,17 +21,12 @@ pub struct Sudoku {
 impl Sudoku {
 
     pub fn new() -> Sudoku {
-        let mut res         = Sudoku { fgrid: Default::default() };
-        let mut def_guesses = HashSet::new();
+        let mut res = Sudoku { fgrid: Default::default() };
 
-        for guess in 1..=SIZE {
-            if let Some( ch ) = std::char::from_digit( guess as u32, (SIZE + 1) as u32 ) {
-                def_guesses.insert( ch );
-            }
-            else {
-                return res
-            }
-        }
+        let def_guesses: HashSet< char > = 
+            ( 1..=SIZE ).into_iter()
+                .map( |num| std::char::from_digit( num as u32, ( SIZE + 1 ) as u32 ).unwrap_or( DEFAULT_CHAR ) )
+                    .collect();
 
         res.fgrid.iter_mut()
             .for_each( |row| row.iter_mut()
